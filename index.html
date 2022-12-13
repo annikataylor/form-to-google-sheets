@@ -1,16 +1,236 @@
-<form name="submit-to-google-sheet">
-  <input name="email" type="email" placeholder="Email" required>
-  <button type="submit">Send</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
 
-<script>
-  const scriptURL = '<SCRIPT URL>'
-  const form = document.forms['submit-to-google-sheet']
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="dailytracker">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
-  })
-</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Urbanist:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+  <title>Tracker</title>
+</head>
+
+<body class="dailytracker">
+  <header>
+    <nav>
+      <h2 class="visually-hidden">Main Menu</h2>
+      <ul>
+        <li><a href="../">Home</a></li>
+        <li><a href="../about/">About</a></li>
+        <li><a>Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <main>
+    <h1>Track your Days</h1>
+
+  <!--<div class="loading hidden">
+  <div class="loader"></div></div>
+  <p class="success-message hidden">Congratulations!</p>
+  <p class="error-message hidden">Something has gone terribly wrong and I'm afraid I dont know what to do</p>
+-->
+
+    <form name="submit-to-google-sheet">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" placeholder="first last">
+
+      <label for="date">Date</label>
+      <input type="text" name="date" id="date" placeholder="week of month/day of week">
+
+      <label for="email">Email Address</label>
+      <input type="email" name="email" id="email" placeholder="required">
+
+
+  <label for="sleep">Hours of Sleep</label>
+  <select id="sleep" name="sleep">
+    <option value="" disabled selection>Select...</option>
+    <option value="1">1-3</option>
+    <option value="4">4-5</option>
+    <option value="6">6-8</option>
+    <option value="9">9-12</option>
+    </select>
+
+  <label for="productivity" id="productivity">Level of Productivity</label>
+  <input type="number" name="productivity" id="productivity" min="1" max="5">
+
+  <label for="movement">Level of Movement</label>
+  <select id="movement" name="movement">
+    <option value="" disabled selection>Select...</option>
+    <option value="none">None: Unsatisfactory</option>
+    <option value="minimal">Minimal: Stretch/Walk</option>
+    <option value="medium">Medium:Ideal: 25-45min Cardio or Strength Training</option>
+    <option value="extreme">Extreme: transcend yourself</option>
+    </select>
+
+
+<div class="fieldset-wrapper">
+      <fieldset>
+        <legend>Emotions Felt Today (Check all that apply)</legend>
+
+        <input type="checkbox" id="enlightenment" name="emotions" value="enlightenment">
+        <label for="enlightenment">Enlightenment</label>
+
+        <input type="checkbox" id="peace" name="emotions" value="peace">
+        <label for="peace">Peace</label>
+
+        <input type="checkbox" id="joy" name="emotions" value="joy">
+        <label for="joy">Joy</label>
+
+        <input type="checkbox" id="love" name="emotions" value="love">
+        <label for="love">Love</label>
+
+        <input type="checkbox" id="reason" name="emotions" value="reason">
+        <label for="reason">Reason</label>
+
+        <input type="checkbox" id="acceptance" name="emotions" value="acceptance">
+        <label for="acceptance">Acceptance</label>
+
+        <input type="checkbox" id="willingness" name="emotions" value="willingness">
+        <label for="willingness">Willingness</label>
+
+        <input type="checkbox" id="neutrality" name="emotions" value="neutrality">
+        <label for="neutrality">Neutrality</label>
+
+        <input type="checkbox" id="courage" name="emotions" value="courage">
+        <label for="courage">Courage</label>
+
+        <input type="checkbox" id="pride" name="emotions" value="pride">
+        <label for="pride">Pride</label>
+
+        <input type="checkbox" id="Anger" name="emotions" value="anger">
+        <label for="anger">Anger</label>
+
+        <input type="checkbox" id="desire" name="emotions" value="desire">
+        <label for="desire">Desire</label>
+
+        <input type="checkbox" id="fear" name="emotions" value="fear">
+        <label for="fear">Fear</label>
+
+        <input type="checkbox" id="grief" name="emotions" value="grief">
+        <label for="grief">Grief</label>
+
+        <input type="checkbox" id="apathy" name="emotions" value="apathy">
+        <label for="apathy">Apathy</label>
+
+        <input type="checkbox" id="guilt" name="emotions" value="guilt">
+        <label for="guilt">Guilt</label>
+
+        <input type="checkbox" id="shame" name="emotions" value="shame">
+        <label for="shame">Shame</label>
+      </fieldset>
+    </div>
+
+<div class="fieldset-wrapper">
+      <fieldset>
+        <legend>Advancement (Check all that apply)</legend>
+
+        <input type="checkbox" name="advances" id="spiritual" value="spiritual">
+        <label for="spiritual">Spiritual Fulfillment</label>
+
+        <input type="checkbox" name="advances" id="hygiene" value="hygiene">
+        <label for="hygiene">AM/PM Hygiene</label>
+
+        <input type="checkbox" name="advances" id="experiences" value="experiences">
+        <label for="experiences">New Experiences</label>
+
+        <input type="checkbox" name="advances" id="health" value="health">
+        <label for="health">Physical Health</label>
+
+        <input type="checkbox" name="advances" id="hobbies" value="hobbies">
+        <label for="hobbies">Hobbies</label>
+
+        <input type="checkbox" name="advances" id="academics" value="academics">
+        <label for="academics">Academics</label>
+
+        <input type="checkbox" name="advances" id="work" value="work">
+        <label for="work">Work</label>
+
+        <input type="checkbox" name="advances" id="relationship" value="relationship">
+        <label for="relationship">Relationships/Family</label>
+      </fieldset>
+    </div>
+
+    <div class="fieldset-wrapper">
+      <fieldset>
+        <legend>What are you proud of today?</legend>
+
+        <input type="radio" name="proud" id="you" value="you">
+        <label for="you">Who you are</label>
+
+        <input type="radio" name="proud" id="confidence" value="confidence">
+        <label for="confidence">Carrying yourself with confidence</label>
+
+        <input type="radio" name="proud" id="caring" value="caring">
+        <label for="caring">Caring for your loved ones and the world</label>
+
+        <input type="radio" name="proud" id="forgiving" value="forgiving">
+        <label for="forgiving">Forgiving yourself or others</label>
+
+        <input type="radio" name="proud" id="forward" value="forward">
+        <label for="forward">Taking the next step when you’re nervous</label>
+
+        <input type="radio" name="proud" id="new" value="new">
+        <label for="new">Trying/developing something new</label>
+
+        <input type="radio" name="proud" id="money" value="money">
+        <label for="money">Paying the bills</label>
+
+        <input type="radio" name="proud" id="visit" value="visit">
+        <label for="visit">Visiting this page</label>
+
+        <input type="radio" name="proud" id="love-daily" value="love-daily">
+        <label for="love-daily">Making love a daily part of your journey</label>
+
+        <input type="radio" name="proud" id="all" value="all">
+        <label for="all">Everything and anything</label>
+
+      </fieldset>
+    </div>
+
+      <label for="gratitude">What are you grateful for? </label>
+      <textarea name="gratitude" id="gratitude" rows="auto" placeholder="..."></textarea>
+
+      <label for="haiku">Haiku Journal</label>
+      <textarea name="haiku" id="haiku" rows="auto" placeholder="5/7/5 syllable count"></textarea>
+
+
+      <!-- You will often see <input type="submit"> instead of <button type="submit">. They are the same functionally, but <button> is newer and more easily styled. type=submit is default if a button is inside a form, so it's not needed   -->
+      <button type="submit">Record</button>
+
+    </form>
+  </main>
+
+  <script src="https://wzrd.in/standalone/formdata-polyfill"></script>
+  <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+  <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxRLIoPP9JgDNGEiGz2_igErHEO0EwOojtKGG1bvTAT6bwDcaE3iBhZrGPa4mZiGeY/exec'
+    const form = document.forms['submit-to-google-sheet']
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+</body>
+
+  <footer>
+    Made by: Annika Taylor <br/> Thanks for Visting!
+  </footer>
+
+</html>
