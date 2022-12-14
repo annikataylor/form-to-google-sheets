@@ -31,7 +31,8 @@ nav li {
 
 
 .dailytracker main {
-   margin-bottom: 3rem;
+   padding: 0 1rem;
+   max-width: 1200px;
   }
 
 
@@ -101,7 +102,7 @@ nav li {
   }
 
   label[for="haiku"] {
-    line-height:1.2;
+    line-height: 1.2;
     margin-bottom: 8px;
   }
 
@@ -158,20 +159,20 @@ nav li {
 
 .dailytracker input[type="radio"]:checked::after {
   transform: scale(1);
-  background-color: var(--button-color);
 }
 
 .dailytracker input[type="checkbox"]::after {
   content: "";
   display: block;
-  width: 6px;
-  height: 10px;
-  border-right: px solid var(--button-color);
+  width: 8px;
+  height: 12px;
+  border-right: 3px solid var(--button-color);
   border-bottom: 3px solid var(--button-color);
   padding-bottom: 3px;
   box-sizing: border-box;
   grid-area: 1 / 1 / -1 / -1;
   opacity: 0;
+  transform: rotate(38deg);
   transition: opacity 200ms;
 }
 
@@ -184,7 +185,7 @@ nav li {
   appearance: none;
   border: none;
   box-shadow: none;
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   background-color: var(--button-color);
   color: var(--text-color);
   margin-top: 1rem;
